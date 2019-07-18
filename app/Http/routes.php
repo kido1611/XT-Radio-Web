@@ -11,6 +11,15 @@
 |
 */
 
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
+    Route::get('/', 'AdminController@IndexGet');
+    Route::get('/stats', 'AdminController@StatsGet');
+});
+
+Route::get('/login', 'AdminController@LoginGet');
+Route::post('/login', 'AdminController@LoginPost');
+Route::get('/logout', 'AdminController@Logout');
+
 Route::get('/', function () {
     return view('welcome');
 });
