@@ -21,5 +21,5 @@ Route::post('/login', 'AdminController@LoginPost');
 Route::get('/logout', 'AdminController@Logout');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('player');
 });
