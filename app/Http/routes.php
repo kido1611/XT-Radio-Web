@@ -16,6 +16,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('/stats', 'AdminController@StatsGet');
 });
 
+Route::group(['prefix' => 'api'], function(){
+    Route::group(['prefix' => 'video'], function(){
+        Route::get('/', 'API\VideoController@VideosGet');
+    });
+});
+
 Route::get('/login', 'AdminController@LoginGet');
 Route::post('/login', 'AdminController@LoginPost');
 Route::get('/logout', 'AdminController@Logout');
