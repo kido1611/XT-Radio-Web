@@ -5,7 +5,7 @@
 @section('container')
     <div class="container p-3">
         <input id="tanggalpicker" class="form-control" type="text" name="tanggal" value="{{$tanggal}}" />
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas" height="600px" width="800px" ></canvas>
     </div>
     <script type="text/javascript">
         var data = {!! $data !!};
