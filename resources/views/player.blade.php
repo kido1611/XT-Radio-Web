@@ -77,14 +77,14 @@
   </head>
   <body>
     <div id="wrapper" data-spy="scroll" data-target=".navbar">
-        <nav id="xt-navbar" class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #ff6f00; color: #fff;">
+        <!-- <nav id="xt-navbar" class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #ff6f00; color: #fff;">
             <div class="container">
                 <h3>Coba website XT yang baru</h3>
                 <div class="mr-auto"></div>
                 <a href="https://beta.xt-radio.com" target="_blank" class="btn btn-primary">Klik disini</a>
             </div>
-        </nav>
-        <nav id="xt-navbar" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" style="margin-top: 56px;">
+        </nav> -->
+        <nav id="xt-navbar" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" style="">
             <div class="container">
                 <a class="navbar-brand " href="#wrapper">XT Radio</a>
             </div>
