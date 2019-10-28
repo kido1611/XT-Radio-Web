@@ -29,3 +29,10 @@ Route::get('/logout', 'AdminController@Logout');
 Route::get('/', function () {
     return view('player');
 });
+Route::get('/play', function () {
+    return view('beta.player');
+});
+
+Route::get('/livestream', function (){
+    return view('beta.livestream');
+});
