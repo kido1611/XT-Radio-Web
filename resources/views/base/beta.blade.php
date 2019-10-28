@@ -125,19 +125,19 @@
                     <div class="navbar-collapse" id="nav_collapse">
                         <div class="mr-auto"></div>
                         <ul class="navbar-nav">
-                            @if(\Illuminate\Support\Facades\Request::is("/"))
+                            @if(\Illuminate\Support\Facades\Request::is("beta"))
                                 <li class="nav-item active">
                             @else
                                 <li class="nav-item" >
                             @endif
-                                <a class="nav-link" href="/">Play</a>
+                                <a class="nav-link" href="/beta">Play</a>
                             </li>
-                            @if(\Illuminate\Support\Facades\Request::is("livestream"))
+                            @if(\Illuminate\Support\Facades\Request::is("beta/livestream"))
                                 <li class="nav-item active">
                             @else
                                 <li class="nav-item" >
                             @endif
-                                <a class="nav-link" href="/livestream">Video Livestream</a>
+                                <a class="nav-link" href="/beta/livestream">Video Livestream</a>
                             </li>
                         </ul>
                     </div>
@@ -244,22 +244,22 @@
             </div>
             <nav id="bottom-navbar" class="navbar navbar-dark d-md-none fixed-bottom bg-dark">
                 <ul class="navbar-nav w-100 nav-pils">
-                    @if(\Illuminate\Support\Facades\Request::is("/"))
+                    @if(\Illuminate\Support\Facades\Request::is("beta"))
                         <li class="nav-item active">
                     @else
                         <li class="nav-item" >
                     @endif
-                        <a class="nav-link" href="/">
+                        <a class="nav-link" href="/beta">
                             <i class="fas fa-music"></i><br/>
                             Play
                         </a>
                     </li>
-                    @if(\Illuminate\Support\Facades\Request::is("livestream"))
+                    @if(\Illuminate\Support\Facades\Request::is("beta/livestream"))
                         <li class="nav-item active">
                     @else
                         <li class="nav-item" >
                     @endif
-                        <a class="nav-link" href="/livestream">
+                        <a class="nav-link" href="/beta/livestream">
                             <i class="fas fa-video"></i><br/>
                             Video Live
                         </a>
