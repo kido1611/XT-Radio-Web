@@ -27,12 +27,16 @@ Route::post('/login', 'AdminController@LoginPost');
 Route::get('/logout', 'AdminController@Logout');
 
 Route::get('/', function () {
+    return view('player');
+});
+
+Route::get('/beta', function () {
     return view('beta.player');
 });
-Route::get('/play', function () {
+Route::get('/beta/play', function () {
     return view('beta.player');
 });
 
-Route::get('/livestream', function (){
+Route::get('/beta/livestream', function (){
     return view('beta.livestream');
 });
