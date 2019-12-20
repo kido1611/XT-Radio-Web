@@ -197,7 +197,7 @@
                     }
                     else if(now.diff(acaraKuper_min)>0 && acaraKuper_max.diff(now)>0)
                     {
-                        $("#acara_text").html("Kuper Berad");
+                        $("#acara_text").html("Nyolu");
                     }
                     else if(now.diff(acara7PM_min)>0 && acara7PM_max.diff(now)>0)
                     {
