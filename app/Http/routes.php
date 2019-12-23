@@ -14,11 +14,18 @@
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('/', 'AdminController@IndexGet');
     Route::get('/stats', 'AdminController@StatsGet');
+    Route::get('/jadwal', 'AdminController@JadwalGet');
+    Route::post('/jadwal', 'AdminController@JadwalPost');
+
+    Route::get('/jadwal/{id}/hapus', 'AdminController@JadwalDelete');
 });
 
 Route::group(['prefix' => 'api'], function(){
     Route::group(['prefix' => 'video'], function(){
         Route::get('/', 'API\VideoController@VideosGet');
+    });
+    Route::group(['prefix' => 'jadwal'], function(){
+        Route::get('/', 'API\JadwalController@GetJadwal');
     });
 });
 

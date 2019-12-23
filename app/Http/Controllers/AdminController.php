@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jadwal;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -46,5 +47,33 @@ class AdminController extends Controller
         }
         $data = Stats::where('tanggal','like',$tanggal.'%')->get();
         return view('admin.stats', ['data' => $data, 'query' => $request->tanggal, 'tanggal' => $tanggal, 'tanggal_min' => $tanggal_min]);
+    }
+    public function JadwalGet(Request $request){
+        $data = Jadwal::orderBy('jam_awal')->get();
+        return view(
+            'admin.jadwal',
+            [
+                'data' => $data
+            ]
+        );
+    }
+    public function JadwalPost(Request $request){
+        $hari = collect($request->hari)->implode(',');
+        $jamAwal = $request->jam_awal;
+        $jamAkhir = $request->jam_akhir;
+        $nama = $request->nama;
+
+        $jadwal = new Jadwal();
+        $jadwal->hari = $hari;
+        $jadwal->jam_awal = $jamAwal;
+        $jadwal->jam_akhir = $jamAkhir;
+        $jadwal->nama = $nama;
+        $jadwal->save();
+
+        return redirect('/admin/jadwal');
+    }
+    public function JadwalDelete(Request $request, $id){
+        Jadwal::where('id', $id)->delete();
+        return redirect('/admin/jadwal');
     }
 }
