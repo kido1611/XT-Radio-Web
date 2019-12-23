@@ -1,0 +1,21 @@
+.bg-xt-orange{
+    background-color: #ff6f00;
+}
+
+@media (min-width: 768px) and (max-width: 1023px){
+    .md\:mini-sidebar {
+        width: 63px;
+    }
+}
+
+@media (min-width: 768px){
+    .md\:mini-sidebar{
+        max-width: 248px;
+    }
+}
+
+@media(min-width: 1024px){
+    .md\:mini-sidebar{
+        width: 247px;
+    }
+}
