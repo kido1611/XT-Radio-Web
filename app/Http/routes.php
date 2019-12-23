@@ -37,9 +37,7 @@ Route::get('/old', function () {
     return view('player');
 });
 
-Route::get('/', function () {
-    return view('beta.player');
-});
+Route::get('/', 'BetaController@index');
 Route::get('/play', function () {
     return view('beta.player');
 });
