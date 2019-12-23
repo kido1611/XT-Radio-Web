@@ -157,7 +157,10 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // HTML Min
-        HTMLMin\HTMLMin\HTMLMinServiceProvider::class
+        HTMLMin\HTMLMin\HTMLMinServiceProvider::class,
+
+        // Laravel Settings
+        Thetispro\Setting\SettingServiceProvider::class,
 
     ],
 
@@ -207,6 +210,9 @@ return [
 
         // HTML Min
         'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
+
+        // Laravel Settings
+        'Setting' => Thetispro\Setting\Facades\Setting::class
 
     ],
 
