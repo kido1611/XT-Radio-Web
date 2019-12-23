@@ -56,60 +56,11 @@
         ]
     })
 
+    // Use this for debug only
+    //var jamXT = moment("2019-12-24 11:31:00 +07:00", "YYYY-MM-DD HH:mm:ss Z").tz('Asia/Jakarta');
+
     var jamXT = moment().tz('Asia/Jakarta');
     var jamXT_S = jamXT.format("YYYY-MM-DD");
-
-    var acaraBMX_min = moment(jamXT_S+" 08:00:00 +07:00", "YYYY-MM-DD HH:mm:ss Z");
-    var acaraBMX_max = moment(jamXT_S+" 09:59:59 +07:00", "YYYY-MM-DD HH:mm:ss Z");
-
-    var acaraLeyeh_min = moment(jamXT_S+" 12:00:00 +07:00", "YYYY-MM-DD HH:mm:ss Z");
-    var acaraLeyeh_max = moment(jamXT_S+" 13:59:59 +07:00", "YYYY-MM-DD HH:mm:ss Z");
-
-    var acaraKuper_min = moment(jamXT_S+" 16:00:00 +07:00", "YYYY-MM-DD HH:mm:ss Z");
-    var acaraKuper_max = moment(jamXT_S+" 17:29:59 +07:00", "YYYY-MM-DD HH:mm:ss Z");
-
-    var acara7PM_min = moment(jamXT_S+" 19:00:00 +07:00", "YYYY-MM-DD HH:mm:ss Z");
-    var acara7PM_max = moment(jamXT_S+" 20:59:59 +07:00", "YYYY-MM-DD HH:mm:ss Z");
-
-    function updateAcara(){
-        if(jamXT.format("d")>=1 && jamXT.format("d")<=5)
-        {
-            if(jamXT.format("H")>=8 && jamXT.format("H")<21)
-            {
-                if(jamXT.diff(acaraBMX_min)>0 && acaraBMX_max.diff(jamXT)>0)
-                {
-                    document.getElementById("status-acara").innerHTML = "Acara sekarang: BMX";
-                }
-                else if(jamXT.diff(acaraLeyeh_min)>0 && acaraLeyeh_max.diff(jamXT)>0)
-                {
-                    document.getElementById("status-acara").innerHTML = "Acara sekarang: Leyeh-leyeh";
-                }
-                else if(jamXT.diff(acaraKuper_min)>0 && acaraKuper_max.diff(jamXT)>0)
-                {
-                    document.getElementById("status-acara").innerHTML = "Acara sekarang: Kuper Berad";
-                }
-                else if(jamXT.diff(acara7PM_min)>0 && acara7PM_max.diff(jamXT)>0)
-                {
-                    document.getElementById("status-acara").innerHTML = "Acara sekarang: 7PM";
-                }
-                else
-                {
-                    document.getElementById("status-acara").innerHTML = "Acara sekarang: Music Time";
-                }
-            }
-            else
-            {
-                document.getElementById("status-acara").innerHTML = "Acara sekarang: -";
-            }
-        }
-        else
-        {
-            document.getElementById("status-acara").innerHTML = "Acara sekarang: -";
-        }
-
-        // document.getElementById("status-acara").innerHTML = "Acara sekarang: -";
-        setTimeout(updateAcara, 60000);
-    }
 
     function updateState(){
         var volume = document.getElementById("button-volume");
@@ -139,11 +90,54 @@
         play.innerHTML = "<i class=\"fas "+playIconString+" fa-1x\"></i><br/>"+playString;
     }
 
+    var jadwalRaw = {!! $data !!};
+    for(x in jadwalRaw){
+        jadwalRaw[x].hari = jadwalRaw[x].hari.split(',');
+        for(y in jadwalRaw[x].hari){
+            jadwalRaw[x].hari[y] = parseInt(jadwalRaw[x].hari[y]);
+        }
+
+        jadwalRaw[x].jam_awal = moment(jamXT_S+" "+jadwalRaw[x].jam_awal+" +07:00", "YYYY-MM-DD HH:mm:ss Z").tz('Asia/Jakarta');
+        jadwalRaw[x].jam_akhir = moment(jamXT_S+" "+jadwalRaw[x].jam_akhir+" +07:00", "YYYY-MM-DD HH:mm:ss Z").tz('Asia/Jakarta');
+    }
+    console.log(jadwalRaw);
+
+    function updateAcara(){
+        var dayOfWeek = jamXT.format('d');
+
+        var jadwalSekarang = null;
+
+        for(x in jadwalRaw){
+            var jadwal = jadwalRaw[x];
+
+            if(jadwal.hari.includes(parseInt(dayOfWeek)) && jamXT.diff(jadwal.jam_awal)>0 && jadwal.jam_akhir.diff(jamXT)>0){
+                jadwalSekarang = jadwal;
+                break;
+            }
+        }
+
+        if(jadwalSekarang == null){
+            if(jamXT.format("H")>=8 && jamXT.format("H")<21)
+            {
+                document.getElementById("status-acara").innerHTML = "Acara sekarang: Music Time";
+            }
+            else{
+                document.getElementById("status-acara").innerHTML = "Acara sekarang: -";
+            }
+        }
+        else{
+            document.getElementById("status-acara").innerHTML = "Acara sekarang: "+jadwalSekarang.nama.toUpperCase();
+        }
+
+        setTimeout(updateAcara, 60000);
+    }
+
     $(document).ready(function(){
         audioPlayer = document.getElementById("audio-player");
         if(audioPlayer == undefined){
             console.log("Tidak ada audio player");
         }
+
         updateState();
         updateAcara();
 
