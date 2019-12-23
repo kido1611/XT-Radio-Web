@@ -29,6 +29,6 @@ class Stats extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('stats');
     }
 }
