@@ -4,6 +4,12 @@
 @endsection
 @section('container')
     <div class="container p-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Statistik</li>
+            </ol>
+        </nav>
         <input id="tanggalpicker" class="form-control" type="text" name="tanggal" value="{{$tanggal}}" />
         <canvas id="canvas" height="600px" width="800px" ></canvas>
     </div>
