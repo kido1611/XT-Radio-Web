@@ -1,18 +1,26 @@
-@extends('base.base')
-@section('titile')
-    XT Radio - Stats
+@extends('base.admin')
+@section('title')
+    Statistik
 @endsection
 @section('container')
-    <div class="container p-3">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Statistik</li>
-            </ol>
-        </nav>
-        <input id="tanggalpicker" class="form-control" type="text" name="tanggal" value="{{$tanggal}}" />
-        <canvas id="canvas" height="600px" width="800px" ></canvas>
+    <div class="card bg-default">
+        <div class="card-header border-0 bg-transparent">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
+                    <h2 class="text-white mb-0">Statistik pendengar</h2>
+                </div>
+            </div>
+            <input id="tanggalpicker" class="form-control" type="text" name="tanggal" value="{{$tanggal}}" />
+        </div>
+        <div class="card-body">
+            <div class="chart-pendengar">
+                <!-- Chart wrapper -->
+                <canvas id="canvas" class="chart-canvas"></canvas>
+            </div>
+        </div>
     </div>
+
     <script type="text/javascript">
         var data = {!! $data !!};
 
@@ -51,9 +59,16 @@
                         tension: 0 // disables bezier curves
                     }
                 },
+                scaleFontColor: "#FFFFFF",
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        fontColor: 'white'
+                    }
+                },
 				title: {
 					display: true,
-					text: 'XT Radio Listener Stats - {{$tanggal}}'
+					text: 'XT Radio Listener Statistik - {{$tanggal}}'
 				},
 				tooltips: {
 					mode: 'index',
@@ -78,6 +93,10 @@
                             displayFormats: {
                                 minute: 'HH:mm'
                             }
+                        },
+                        gridLines: {
+                            color: '#888',
+                            zeroLineColor: '#aaa'
                         }
                     }],
                     yAxes: [{
@@ -85,6 +104,10 @@
 						scaleLabel: {
 							display: true,
 							labelString: 'Listener'
+                        },
+                        gridLines: {
+                            color: '#888',
+                            zeroLineColor: '#aaa'
                         }
 					}]
                 }
@@ -92,6 +115,7 @@
         };
 
         window.onload = function(){
+            Chart.defaults.global.defaultFontColor = "#fff";
             var ctx = document.getElementById("canvas").getContext("2d");
             window.myLine = new Chart(ctx, config);
         };
@@ -112,11 +136,10 @@
 @endsection
 
 @section('assetscss')
-    <link rel="stylesheet" href="/assets/css/chart.min.css">
     <link rel="stylesheet" href="/assets/css/daterangepicker.css">
 @endsection
 @section('assetsjs')
-    <script src="/assets/js/chart.bundle.min.js"></script>
     <script src="/assets/js/moment.js"></script>
+    <script src="/assets/js/chart.bundle.min.js"></script>
     <script src="/assets/js/daterangepicker.js"></script>
 @endsection

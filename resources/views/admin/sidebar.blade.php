@@ -1,24 +1,40 @@
-<div class="">
-    <a href="/admin/jadwal" class="">
-        <div class="flex items-center p-3 hover:bg-red-500" style="max-height: 50px;">
-            <i class="fas fa-calendar-alt ml-1 mr-4 fa-2x"></i>
-            <p class="uppercase break-words block" style="text-overflow: ellipsis; overflow: hidden; max-height: 24px;">jadwal</p>
-        </div>
-    </a>
-</div>
-<div class="">
-    <a href="/admin/stats" class="">
-        <div class="flex items-center p-3 hover:bg-red-500" style="max-height: 50px;">
-            <i class="fas fa-chart-bar ml-1 mr-4 fa-2x"></i>
-            <p class="uppercase break-words">statistik</p>
-        </div>
-    </a>
-</div>
-<div class="">
-    <a href="/logout" class="">
-        <div class="flex items-center p-3 hover:bg-red-500" style="max-height: 50px;">
-            <i class="fas fa-sign-out-alt ml-1 mr-4 fa-2x"></i>
-            <p class="uppercase break-words">logout</p>
-        </div>
-    </a>
-</div>
+@if(\Illuminate\Support\Facades\Request::is("admin"))
+    <li class="nav-item  active ">
+        <a class="nav-link  active " href="/admin">
+@else
+    <li class="nav-item">
+        <a class="nav-link" href="/admin">
+@endif
+            <i class="fas fa-tv text-primary"></i> Dashboard
+        </a>
+    </li>
+@if(\Illuminate\Support\Facades\Request::is("admin/settings"))
+    <li class="nav-item active">
+        <a class="nav-link active" href="/admin/settings">
+@else
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/settings">
+@endif
+            <i class="fas fa-tools text-orange"></i> Settings
+        </a>
+    </li>
+@if(\Illuminate\Support\Facades\Request::is("admin/jadwal"))
+    <li class="nav-item active">
+        <a class="nav-link active" href="/admin/jadwal">
+@else
+    <li class="nav-item">
+        <a class="nav-link " href="/admin/jadwal">
+@endif
+            <i class="fas fa-calendar-alt text-blue"></i> Jadwal
+        </a>
+    </li>
+@if(\Illuminate\Support\Facades\Request::is("admin/stats"))
+    <li class="nav-item active">
+        <a class="nav-link active" href="/admin/stats">
+@else
+    <li class="nav-item">
+        <a class="nav-link " href="/admin/stats">
+@endif
+            <i class="fas fa-chart-line text-green"></i> Statistik
+        </a>
+    </li>

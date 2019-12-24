@@ -1,10 +1,8 @@
-@extends('base.base')
+@extends('base.admin')
 @section('container')
-    <div class="container">
-        <ul>
-            <li><a href="/admin/stats">Stats</a></li>
-            <li><a href="/admin/jadwal">Jadwal Acara</a></li>
-            <li><a href="/logout">Logout</a></li>
-        </ul>
+    <div class="row">
+        <div class="col-12 mb-5 text-light">
+            <h1>Sedang dibangun</h1>
+        </div>
     </div>
 @endsection
