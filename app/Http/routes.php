@@ -16,8 +16,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('/stats', 'AdminController@StatsGet');
     Route::get('/jadwal', 'AdminController@JadwalGet');
     Route::post('/jadwal', 'AdminController@JadwalPost');
-
     Route::get('/jadwal/{id}/hapus', 'AdminController@JadwalDelete');
+
+    Route::get('/settings', 'AdminController@SettingsGet');
+    Route::post('/settings', 'AdminController@SettingsPost');
 });
 
 Route::group(['prefix' => 'api'], function(){

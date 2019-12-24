@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use App\Stats;
+use Thetispro\Setting\Facades\Setting;
 
 class AdminController extends Controller
 {
@@ -75,5 +76,22 @@ class AdminController extends Controller
     public function JadwalDelete(Request $request, $id){
         Jadwal::where('id', $id)->delete();
         return redirect('/admin/jadwal');
+    }
+    public function SettingsGet(Request $request){
+        $shutdown = Setting::get('shutdown', false);
+        $message = Setting::get('message');
+        return view('admin.settings', [
+            'shutdown' => $shutdown,
+            'message' => $message
+        ]);
+    }
+    public function SettingsPost(Request $request){
+        $shutdown = $request->shutdown=="on"?true:false;
+        $message = $request->message;
+
+        Setting::set('shutdown', $shutdown);
+        Setting::set('message', $message);
+
+        return redirect('/admin/settings');
     }
 }
