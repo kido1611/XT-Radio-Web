@@ -81,6 +81,14 @@
             <ul class="navbar-nav">
                 @include('admin.sidebar')
             </ul>
+            <hr class="my-3">
+            <ul class="navbar-nav mb-md-3">
+                <li class="nav-item">
+                    <a class="nav-link " href="/" target="_blank">
+                        <i class="ni ni-spaceship"></i> Buka web XT Radio
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
