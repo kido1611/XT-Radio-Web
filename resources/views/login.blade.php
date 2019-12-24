@@ -36,7 +36,7 @@
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                            <small>Sign to XT Radio</small>
+                            <small>Sign in to XT Radio</small>
                         </div>
                         @if(\Session::has('alert'))
                             <div class="alert alert-danger" role="alert">
@@ -76,7 +76,7 @@
             <div class="row align-items-center">
                 <div class="col-12">
                     <div class="copyright text-center text-muted">
-                        &copy; {{date('Y')}} <a href="/" class="font-weight-bold ml-1" target="_blank">XT Radio</a>
+                        &copy; {{date('Y')}} <a href="/" class="font-weight-bold ml-1" target="_blank">XT Radio Digital Division</a><br/>Created using <a href="https://demos.creative-tim.com/argon-dashboard/index.html" target="_blank">Argon Dashboard</a> templates
                     </div>
                 </div>
             </div>
