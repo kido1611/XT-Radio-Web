@@ -6,7 +6,7 @@
             <img src="/assets/images/xt-logo.png" alt="XT Logo" style="width:250px; height: 250px;">
         </div>
         <div class="col col-12 col-md-6 w-100">
-            <div id="xt-player" class="">
+            <div id="xt-player" class="d-none">
                 <button id="button-play" type="button" class="btn btn-primary" style="width: 80px; height: 80px; background-color: #ff6f00; border-color:#ff6f00; border: 0px;">
                     <i class="fas fa-play fa-1x"></i><br/>
                     Play
@@ -18,7 +18,7 @@
             </div>
             <br/>
             <div class="alert alert-warning m-auto" style="width: fit-content;">
-                <h4 class="m-0" id="status-acara">Acara sekarang: -</h4>
+                <h4 class="m-0" id="status-acara">-</h4>
             </div>
         </div>
     </div>
@@ -44,6 +44,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.26/moment-timezone.min.js" integrity="sha256-9QeMOhKF5nGXvByLC2BkHmW9JaL6Fn4+YCfhvR0VO2s=" crossorigin="anonymous"></script>
 <script type="text/javascript">
     var audioPlayer = undefined;
+    var shutdown = {!!$shutdown?'true':'false'!!};
+    var shutdownMessage = "{!! $message !!}";
 
     moment.locale('id')
     moment.tz.load({
@@ -55,12 +57,6 @@
 
         ]
     })
-
-    // Use this for debug only
-    //var jamXT = moment("2019-12-24 11:31:00 +07:00", "YYYY-MM-DD HH:mm:ss Z").tz('Asia/Jakarta');
-
-    var jamXT = moment().tz('Asia/Jakarta');
-    var jamXT_S = jamXT.format("YYYY-MM-DD");
 
     function updateState(){
         var volume = document.getElementById("button-volume");
@@ -90,6 +86,9 @@
         play.innerHTML = "<i class=\"fas "+playIconString+" fa-1x\"></i><br/>"+playString;
     }
 
+    var jamXT = moment().tz('Asia/Jakarta');
+    var jamXT_S = jamXT.format("YYYY-MM-DD");
+
     var jadwalRaw = {!! $data !!};
     for(x in jadwalRaw){
         jadwalRaw[x].hari = jadwalRaw[x].hari.split(',');
@@ -103,6 +102,11 @@
     console.log(jadwalRaw);
 
     function updateAcara(){
+        // Use this for debug only
+        //var jamXT = moment("2019-12-24 11:31:00 +07:00", "YYYY-MM-DD HH:mm:ss Z").tz('Asia/Jakarta');
+
+        jamXT = moment().tz('Asia/Jakarta');
+
         var dayOfWeek = jamXT.format('d');
 
         var jadwalSekarang = null;
@@ -127,6 +131,14 @@
         }
         else{
             document.getElementById("status-acara").innerHTML = "Acara sekarang: "+jadwalSekarang.nama.toUpperCase();
+        }
+
+        if(shutdown===true){
+            $("#xt-player").addClass('d-none');
+            document.getElementById("status-acara").innerHTML = shutdownMessage;
+        }
+        else{
+            $("#xt-player").removeClass('d-none');
         }
 
         setTimeout(updateAcara, 60000);
