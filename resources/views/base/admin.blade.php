@@ -33,7 +33,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="/">
+        <a class="navbar-brand pt-0" href="/admin">
             <img src="/assets/images/xt-logo.png" class="navbar-brand-img" alt="XT Radio">
             XT Radio
         </a>
