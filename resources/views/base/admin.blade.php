@@ -171,7 +171,7 @@
 
 <!--   Argon JS   -->
 <script src="/assets/js/argon-dashboard.min.js"></script>
-
+<script src="/assets/js/admin.js"></script>
 @section('assetsjs')
 
 @show
