@@ -29,6 +29,7 @@ Route::group(['prefix' => 'api'], function(){
     Route::group(['prefix' => 'jadwal'], function(){
         Route::get('/', 'API\JadwalController@GetJadwal');
     });
+    Route::get('/xt', 'API\XTController@getXTData');
 });
 
 Route::get('/login', 'AdminController@LoginGet');
