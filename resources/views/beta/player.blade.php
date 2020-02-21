@@ -2,9 +2,10 @@
 @section('container')
 <div class="container playercontainer">
     <div class="row m-auto align-items-center w-100">
-        <div class="col col-12 col-md-6 text-center">
+        <div class="col col-12 col-md-6 text-center" style="margin-bottom: 30px;">
             <img src="/assets/images/xt-logo.png" alt="XT Logo" style="width:250px; height: 250px;">
         </div>
+        
         <div class="col col-12 col-md-6 w-100">
             <div id="xt-player" class="d-none">
                 <button id="button-play" type="button" class="btn btn-primary" style="width: 80px; height: 80px; background-color: #ff6f00; border-color:#ff6f00; border: 0px;">

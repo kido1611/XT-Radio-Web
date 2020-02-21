@@ -48,3 +48,13 @@ Route::get('/play', function () {
 Route::get('/livestream', function (){
     return view('beta.livestream');
 });
+
+Route::get('/sejarah', function (){
+    return view('sejarah');
+
+});
+
+Route::get('/anggota', function (){
+    return view('anggota');
+
+});

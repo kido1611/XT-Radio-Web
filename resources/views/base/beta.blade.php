@@ -139,6 +139,20 @@
                             @endif
                                 <a class="nav-link" href="/livestream">Video Livestream</a>
                             </li>
+                            @if(\Illuminate\Support\Facades\Request::is("sejarah"))
+                                <li class="nav-item active">
+                            @else
+                                <li class="nav-item" >
+                            @endif
+                                <a class="nav-link" href="/sejarah">Info</a>
+                            </li>
+                            @if(\Illuminate\Support\Facades\Request::is("anggota"))
+                                <li class="nav-item active">
+                            @else
+                                <li class="nav-item" >
+                            @endif
+                                <a class="nav-link" href="/anggota">Crew</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -264,9 +278,29 @@
                             Video Live
                         </a>
                     </li>
+                    @if(\Illuminate\Support\Facades\Request::is("sejarah"))
+                        <li class="nav-item active">
+                    @else
+                        <li class="nav-item" >
+                    @endif
+                        <a class="nav-link" href="/sejarah">
+                            <i class="fas fa-info"></i><br/>
+                            Info
+                        </a>
+                    </li>
+                    @if(\Illuminate\Support\Facades\Request::is("anggota"))
+                        <li class="nav-item active">
+                    @else
+                        <li class="nav-item" >
+                    @endif
+                        <a class="nav-link" href="/anggota">
+                            <i class="fas fa-user-friends"></i><br/>
+                            Crew
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#modalAbout">
-                            <i class="fas fa-info"></i><br/>
+                            <i class="far fa-comment"></i><br/>
                             XT Radio
                         </a>
                     </li>
