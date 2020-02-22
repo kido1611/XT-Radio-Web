@@ -134,7 +134,7 @@
         }
 
         if(jadwalSekarang == null){
-            if(jamXT.format("H")>=8 && jamXT.format("H")<21)
+            if(jamXT.format("H")>=8 && jamXT.format("H")<21 && jamXT.format("d")>=1 && jamXT.format("d")<=5)
             {
                 document.getElementById("status-acara").innerHTML = "Acara sekarang: Music Time";
             }
