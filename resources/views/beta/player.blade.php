@@ -24,13 +24,22 @@
         </div>
     </div>
 </div>
+<div class="text-left pl-5 pr-5 pt-5 pb-3">
+    <h6 class="mb-1">Partner</h6>
+    <hr style="color: #ff6f00; border-top: 3px solid #ff6f00; margin: 0 0 8px;"/>
+    <div class="row text-center">
+        <div class="col-12">
+            <a href="http://scientiarum.com/" target="_blank"><img class="m-2" src="/assets/images/partner/sa.jpg" style=" height: 70px;"></a>
+        </div>
+    </div>
+</div>
 @endsection
 @section('assetscss')
 <style type="text/css">
     .playercontainer{
         display: flex;
         align-items: center;
-        min-height: calc(100vh - 80px);
+        min-height: calc(90vh - 80px);
     }
     @media (min-width: 768px) {
         .playercontainer{
