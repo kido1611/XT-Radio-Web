@@ -29,7 +29,10 @@
     <hr style="color: #ff6f00; border-top: 3px solid #ff6f00; margin: 0 0 8px;"/>
     <div class="row text-center">
         <div class="col-12">
-            <a href="http://scientiarum.com/" target="_blank"><img class="m-2" src="/assets/images/partner/sa.jpg" style=" height: 70px;"></a>
+            <a href="http://scientiarum.com/" target="_blank" >
+                <img class="m-2" src="/assets/images/partner/sa.jpg" style=" height: 70px;"
+                     data-toggle="tooltip" data-placement="bottom" title="Scientiarum">
+            </a>
         </div>
     </div>
 </div>
@@ -155,6 +158,8 @@
     }
 
     $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip()
+
         audioPlayer = document.getElementById("audio-player");
         if(audioPlayer == undefined){
             console.log("Tidak ada audio player");
